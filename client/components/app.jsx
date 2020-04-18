@@ -11,8 +11,15 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.getAllGrades();
+  getAverageGrade() {
+    const students = this.state.grades;
+    const numOfStudents = this.state.grades.length;
+    let gradeTotal = 0;
+    for (let i = 0; i < numOfStudents; i++) {
+      gradeTotal += students[i].grade;
+    }
+    const gradeAverage = Math.round(gradeTotal / numOfStudents);
+    return gradeAverage;
   }
 
   getAllGrades() {
@@ -29,10 +36,18 @@ class App extends React.Component {
       .catch(err => console.error(err));
   }
 
+  componentDidMount() {
+    this.getAllGrades();
+  }
+
+  componentDidUpdate() {
+    // console.log(this.state.average)
+  }
+
   render() {
     return (
       <div className='container mt-4 mb-4'>
-        <Header />
+        <Header average={ this.getAverageGrade() } />
         <main>
           <GradeTable grades={ this.state.grades }/>
           <div>
