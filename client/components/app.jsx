@@ -5,27 +5,25 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allGrades: [],
+      grades: [],
       noGrades: 'hidden'
     };
   }
 
   componentDidMount() {
-    // eslint-disable-next-line no-console
-    console.log('mounted');
+    this.getAllGrades();
+  }
+
+  getAllGrades() {
     fetch('/api/grades')
       .then(res => res.json())
       .then(grades => {
+        this.setState({ grades: grades });
         if (grades.length === 0) {
-          this.setState({
-            noGrades: null
-          });
+          this.setState({ noGrades: null });
         } else {
-          this.setState({
-            noGrades: 'hidden'
-          });
+          this.setState({ noGrades: 'hidden' });
         }
-        this.setState({ allGrades: grades });
       })
       .catch(err => console.error(err));
   }
@@ -37,7 +35,7 @@ class App extends React.Component {
           <h1>Student Grade Table</h1>
         </header>
         <main>
-          <GradeTable props={ this.state.allGrades }/>
+          <GradeTable grades={ this.state.grades }/>
           <div>
             <p className={ this.state.noGrades }>No grades recorded</p>
           </div>

@@ -7,6 +7,7 @@ export default class GradeTable extends React.Component {
     this.state = {
 
     };
+
   }
 
   render() {
@@ -20,7 +21,7 @@ export default class GradeTable extends React.Component {
           </tr>
         </thead>
         <tbody>
-          <Grade />
+          <Grade grades={ this.props.grades }/>
         </tbody>
       </table>
     );

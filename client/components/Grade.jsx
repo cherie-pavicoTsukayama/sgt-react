@@ -8,9 +8,19 @@ export default class Grade extends React.Component {
     };
   }
 
+  // handleGrade() {
+  //   for (let i = 0; i < this.props.grades.length; i++) {
+  //     // console.log(this.props.grades[i]);
+  //   }
+  // }
+
   render() {
     return (
-      <div>hi</div>
+      <tr>
+        <td>{ }</td>
+        <td>{ }</td>
+        <td>{ }</td>
+      </tr>
     );
   }
 }
