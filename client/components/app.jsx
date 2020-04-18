@@ -7,8 +7,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       grades: [],
-      noGrades: 'd-none',
-      average: '0'
+      noGrades: 'd-none'
     };
   }
 
@@ -20,14 +19,14 @@ class App extends React.Component {
       gradeTotal += students[i].grade;
     }
     const gradeAverage = Math.round(gradeTotal / numOfStudents);
-    this.setState({ average: gradeAverage });
+    return gradeAverage;
   }
 
   getAllGrades() {
     fetch('/api/grades')
       .then(res => res.json())
       .then(grades => {
-        this.setState({ grades: grades }, this.getAverageGrade);
+        this.setState({ grades: grades });
         if (grades.length === 0) {
           this.setState({ noGrades: null });
         } else {
@@ -48,7 +47,7 @@ class App extends React.Component {
   render() {
     return (
       <div className='container mt-4 mb-4'>
-        <Header average={ this.state.average } />
+        <Header average={ this.getAverageGrade() } />
         <main>
           <GradeTable grades={ this.state.grades }/>
           <div>
