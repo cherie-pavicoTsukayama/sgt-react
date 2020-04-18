@@ -1,4 +1,5 @@
 import React from 'react';
+import GradeTable from './GradeTable';
 
 class App extends React.Component {
   constructor(props) {
@@ -36,15 +37,7 @@ class App extends React.Component {
           <h1>Student Grade Table</h1>
         </header>
         <main>
-          <table className="table table-striped">
-            <thead className="thead-light">
-              <tr>
-                <th className="col-2">Student Name</th>
-                <th className="col">Course</th>
-                <th className="col-3">Grade</th>
-              </tr>
-            </thead>
-          </table>
+          <GradeTable props={ this.state.allGrades }/>
           <div>
             <p className={ this.state.noGrades }>No grades recorded</p>
           </div>
