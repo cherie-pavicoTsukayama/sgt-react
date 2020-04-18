@@ -15,9 +15,9 @@ export default class GradeTable extends React.Component {
       <table className="table table-striped">
         <thead className="thead-light">
           <tr>
-            <th className="col-2">Student Name</th>
-            <th className="col">Course</th>
-            <th className="col-3">Grade</th>
+            <th>Student Name</th>
+            <th>Course</th>
+            <th>Grade</th>
           </tr>
         </thead>
         <tbody>
