@@ -7,7 +7,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       grades: [],
-      noGrades: 'hidden'
+      noGrades: 'd-none'
     };
   }
 
@@ -23,7 +23,7 @@ class App extends React.Component {
         if (grades.length === 0) {
           this.setState({ noGrades: null });
         } else {
-          this.setState({ noGrades: 'hidden' });
+          this.setState({ noGrades: 'd-none' });
         }
       })
       .catch(err => console.error(err));
