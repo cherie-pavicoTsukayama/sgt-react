@@ -3,8 +3,9 @@ import React from 'react';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.super = {
-      allGrades: []
+    this.state = {
+      allGrades: [],
+      noGrades: 'hidden'
     };
   }
 
@@ -14,9 +15,16 @@ class App extends React.Component {
     fetch('/api/grades')
       .then(res => res.json())
       .then(grades => {
+        if (grades.length === 0) {
+          this.setState({
+            noGrades: null
+          });
+        } else {
+          this.setState({
+            noGrades: 'hidden'
+          });
+        }
         this.setState({ allGrades: grades });
-        // eslint-disable-next-line no-console
-        console.log(grades);
       })
       .catch(err => console.error(err));
   }
@@ -38,7 +46,7 @@ class App extends React.Component {
             </thead>
           </table>
           <div>
-            <p className="hidden">No grades recorded</p>
+            <p className={ this.state.noGrades }>No grades recorded</p>
           </div>
         </main>
       </div>
