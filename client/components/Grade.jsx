@@ -1,26 +1,15 @@
 import React from 'react';
 
-export default class Grade extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-
-  // handleGrade() {
-  //   for (let i = 0; i < this.props.grades.length; i++) {
-  //     // console.log(this.props.grades[i]);
-  //   }
-  // }
-
-  render() {
-    return (
-      <tr>
-        <td>{ }</td>
-        <td>{ }</td>
-        <td>{ }</td>
-      </tr>
-    );
-  }
+export default function Grade(props) {
+  return (
+    props.grades.map(grade => {
+      return (
+        <tr key={grade.id}>
+          <td>{ grade.name }</td>
+          <td>{ grade.course}</td>
+          <td>{ grade.grade}</td>
+        </tr>
+      );
+    })
+  );
 }
