@@ -27,12 +27,10 @@ export default class GradeForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // eslint-disable-next-line no-console
-    console.log('button clicked');
     const newGrade = {
       name: this.state.name,
       course: this.state.course,
-      grade: this.state.grade
+      grade: parseInt(this.state.grade)
     };
     this.props.onSubmit(newGrade);
     this.setState({

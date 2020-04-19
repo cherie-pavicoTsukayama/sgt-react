@@ -53,8 +53,8 @@ class App extends React.Component {
     fetch('/api/grades', postGrade)
       .then(res => res.json())
       .then(grade => {
-        // eslint-disable-next-line no-console
-        console.log(grade);
+        const newGrades = this.state.grades.concat(grade);
+        this.setState({ grades: newGrades });
       })
       .catch(err => console.error(err));
 
