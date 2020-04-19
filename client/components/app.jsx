@@ -73,7 +73,8 @@ class App extends React.Component {
           const newGrades = state.grades.filter(grade => (grade.id !== gradeId));
           return { grades: newGrades };
         });
-      });
+      })
+      .catch(err => console.error(err));
   }
 
   componentDidMount() {
