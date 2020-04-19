@@ -41,21 +41,22 @@ class App extends React.Component {
 
   addGrade(newGrade) {
     // eslint-disable-next-line no-console
-    console.log(newGrade);
-    // const postGrade = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(newGrade)
-    // };
+    // console.log(newGrade);
+    const postGrade = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newGrade)
+    };
 
-    // fetch('/api/grades', postGrade)
-    //   .then(res => res.json())
-    //   .then(grade => {
-    //     console.log(grade);
-    //   })
-    //   .catch(err => console.error(err));
+    fetch('/api/grades', postGrade)
+      .then(res => res.json())
+      .then(grade => {
+        // eslint-disable-next-line no-console
+        console.log(grade);
+      })
+      .catch(err => console.error(err));
 
   }
 
