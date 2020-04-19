@@ -17,24 +17,6 @@
       "name": "Douglas Crockford",
       "course": "JavaScript",
       "grade": 100
-    },
-    {
-      "name": "Cherie",
-      "course": "JavaScript",
-      "grade": 100,
-      "id": 33
-    },
-    {
-      "name": "Parker",
-      "course": "JavaScript",
-      "grade": 100,
-      "id": 34
-    },
-    {
-      "name": "Shane",
-      "course": "Walking",
-      "grade": 56,
-      "id": 35
     }
   ]
 }

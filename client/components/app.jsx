@@ -12,6 +12,7 @@ class App extends React.Component {
     };
     this.getAverageGrade = this.getAverageGrade.bind(this);
     this.addGrade = this.addGrade.bind(this);
+    this.deleteGrade = this.deleteGrade.bind(this);
   }
 
   getAverageGrade() {
@@ -58,6 +59,11 @@ class App extends React.Component {
 
   }
 
+  deleteGrade(gradeId) {
+    // eslint-disable-next-line no-console
+    console.log('delete button clicked:', gradeId);
+  }
+
   componentDidMount() {
     this.getAllGrades();
   }
@@ -68,8 +74,8 @@ class App extends React.Component {
         <Header average={ this.getAverageGrade() } />
         <main>
           <div className='d-flex'>
-            <GradeTable grades={this.state.grades} />
-            <GradeForm onSubmit={this.addGrade}/>
+            <GradeTable grades={this.state.grades} deleteGrade={this.deleteGrade}/>
+            <GradeForm onSubmit={this.addGrade} />
           </div>
           <div>
             <p className={ this.state.noGrades }>No grades recorded</p>

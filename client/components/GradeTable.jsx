@@ -5,7 +5,7 @@ export default function GradeTable(props) {
   function getGrade() {
     return (
       props.grades.map(grade => {
-        return (<Grade key={grade.id} grade={grade} />);
+        return (<Grade key={ grade.id } grade={ grade } deleteGrade={ props.deleteGrade }/>);
       })
     );
   }
@@ -17,6 +17,7 @@ export default function GradeTable(props) {
           <th>Student Name</th>
           <th>Course</th>
           <th>Grade</th>
+          <th>Operations</th>
         </tr>
       </thead>
       <tbody>
