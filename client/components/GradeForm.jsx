@@ -38,11 +38,11 @@ export default class GradeForm extends React.Component {
       course: '',
       grade: ''
     });
-    document.getElementById('gradeForm').reset();
+    event.target.reset();
   }
 
   handleCancel() {
-    document.getElementById('gradeForm').reset();
+    event.target.reset();
     this.setState({
       name: '',
       course: '',

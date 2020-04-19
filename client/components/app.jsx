@@ -40,8 +40,6 @@ class App extends React.Component {
   }
 
   addGrade(newGrade) {
-    // eslint-disable-next-line no-console
-    // console.log(newGrade);
     const postGrade = {
       method: 'POST',
       headers: {
@@ -62,10 +60,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getAllGrades();
-  }
-
-  componentDidUpdate() {
-    // console.log(this.state.average)
   }
 
   render() {
