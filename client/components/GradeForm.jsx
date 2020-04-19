@@ -28,12 +28,23 @@ export default class GradeForm extends React.Component {
     event.preventDefault();
     // eslint-disable-next-line no-console
     console.log('button clicked');
-    this.props.onSubmit('hi something got passed!');
+    const newGrade = {
+      name: this.state.name,
+      course: this.state.course,
+      grade: this.state.grade
+    };
+    this.props.onSubmit(newGrade);
+    this.setState({
+      name: '',
+      course: '',
+      grade: ''
+    });
+    document.getElementById('gradeForm').reset();
   }
 
   render() {
     return (
-      <form className="ml-2 form-group" onSubmit={ this.handleSubmit }>
+      <form id='gradeForm' className="ml-2 form-group" onSubmit={ this.handleSubmit }>
         <div className="d-flex flex-nowrap align-items-center mb-3">
           <i className='fas fa-user col'></i>
           <input type="text" placeholder="Name" name="name" onChange={ this.handleChange } />
