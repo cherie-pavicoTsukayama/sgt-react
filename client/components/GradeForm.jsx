@@ -9,8 +9,7 @@ export default class GradeForm extends React.Component {
       grade: ''
     };
     this.handleChange = this.handleChange.bind(this);
-    // this.handleChangeCourse = this.handleChangeName.bind(this);
-    // this.handleChangeName = this.handleChangeName.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -25,25 +24,30 @@ export default class GradeForm extends React.Component {
     }
   }
 
-  handle
+  handleSubmit(event) {
+    event.preventDefault();
+    // eslint-disable-next-line no-console
+    console.log('button clicked');
+    this.props.onSubmit('hi something got passed!');
+  }
 
   render() {
     return (
-      <form className="ml-2 form-group">
+      <form className="ml-2 form-group" onSubmit={ this.handleSubmit }>
         <div className="d-flex flex-nowrap align-items-center mb-3">
           <i className='fas fa-user col'></i>
           <input type="text" placeholder="Name" name="name" onChange={ this.handleChange } />
         </div>
         <div className="d-flex flex-nowrap align-items-center mb-3">
           <i className='fas fa-book col'></i>
-          <input type="text" placeholder="Course" name="course" onChange={this.handleChange} />
+          <input type="text" placeholder="Course" name="course" onChange={ this.handleChange } />
         </div>
         <div className="d-flex flex-nowrap align-items-center mb-3">
           <i className='fas fa-graduation-cap col'></i>
-          <input type="text" placeholder="Grade" name="grade" onChange={this.handleChange} />
+          <input type="text" placeholder="Grade" name="grade" onChange={ this.handleChange } />
         </div>
         <div className="d-flex flex-nowrap justify-content-end">
-          <button>Add</button>
+          <button type='submit'>Add</button>
           <button className="ml-3">Cancel</button>
         </div>
       </form>

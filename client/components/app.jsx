@@ -10,6 +10,8 @@ class App extends React.Component {
       grades: [],
       noGrades: 'd-none'
     };
+    this.getAverageGrade = this.getAverageGrade.bind(this);
+    this.addGrade = this.addGrade.bind(this);
   }
 
   getAverageGrade() {
@@ -37,6 +39,26 @@ class App extends React.Component {
       .catch(err => console.error(err));
   }
 
+  addGrade(newGrade) {
+    // eslint-disable-next-line no-console
+    console.log(newGrade);
+    // const postGrade = {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(newGrade)
+    // };
+
+    // fetch('/api/grades', postGrade)
+    //   .then(res => res.json())
+    //   .then(grade => {
+    //     console.log(grade);
+    //   })
+    //   .catch(err => console.error(err));
+
+  }
+
   componentDidMount() {
     this.getAllGrades();
   }
@@ -52,7 +74,7 @@ class App extends React.Component {
         <main>
           <div className='d-flex'>
             <GradeTable grades={this.state.grades} />
-            <GradeForm />
+            <GradeForm onSubmit={this.addGrade}/>
           </div>
           <div>
             <p className={ this.state.noGrades }>No grades recorded</p>
