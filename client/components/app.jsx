@@ -60,8 +60,20 @@ class App extends React.Component {
   }
 
   deleteGrade(gradeId) {
-    // eslint-disable-next-line no-console
-    console.log('delete button clicked:', gradeId);
+    const deleteGrade = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    fetch(`/api/grades/${gradeId}`, deleteGrade)
+      .then(() => {
+        this.setState(state => {
+          const newGrades = state.grades.filter(grade => (grade.id !== gradeId));
+          return { grades: newGrades };
+        });
+      });
   }
 
   componentDidMount() {
