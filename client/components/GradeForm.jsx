@@ -10,6 +10,7 @@ export default class GradeForm extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   handleChange(event) {
@@ -42,9 +43,18 @@ export default class GradeForm extends React.Component {
     document.getElementById('gradeForm').reset();
   }
 
+  handleCancel() {
+    document.getElementById('gradeForm').reset();
+    this.setState({
+      name: '',
+      course: '',
+      grade: ''
+    });
+  }
+
   render() {
     return (
-      <form id='gradeForm' className="ml-2 form-group" onSubmit={ this.handleSubmit }>
+      <form id='gradeForm' className="ml-2 form-group" onSubmit={ this.handleSubmit } onReset={ this.handleCancel }>
         <div className="d-flex flex-nowrap align-items-center mb-3">
           <i className='fas fa-user col'></i>
           <input type="text" placeholder="Name" name="name" onChange={ this.handleChange } />
@@ -59,7 +69,7 @@ export default class GradeForm extends React.Component {
         </div>
         <div className="d-flex flex-nowrap justify-content-end">
           <button type='submit'>Add</button>
-          <button className="ml-3">Cancel</button>
+          <button type='reset' className="ml-3">Cancel</button>
         </div>
       </form>
     );
