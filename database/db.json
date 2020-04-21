@@ -1,40 +1,22 @@
 {
-  "grades": [
-    {
-      "id": 5,
-      "name": "Kyle Simpson",
-      "course": "JavaScript",
-      "grade": 100
-    },
-    {
-      "id": 12,
-      "name": "Brendan Eich",
-      "course": "JavaScript",
-      "grade": 62
-    },
-    {
-      "id": 32,
-      "name": "Douglas Crockford",
-      "course": "JavaScript",
-      "grade": 100
-    },
-    {
-      "name": "Cherie",
-      "course": "JavaScript",
-      "grade": 100,
-      "id": 33
-    },
-    {
-      "name": "Parker",
-      "course": "JavaScript",
-      "grade": 100,
-      "id": 34
-    },
-    {
-      "name": "Shane",
-      "course": "Walking",
-      "grade": 56,
-      "id": 35
-    }
-  ]
+    "grades": [
+        {
+            "id": 5,
+            "name": "Kyle Simpson",
+            "course": "JavaScript",
+            "grade": 100
+        },
+        {
+            "id": 12,
+            "name": "Brendan Eich",
+            "course": "JavaScript",
+            "grade": 100
+        },
+        {
+            "id": 32,
+            "name": "Douglas Crockford",
+            "course": "JavaScript",
+            "grade": 100
+        }
+    ]
 }

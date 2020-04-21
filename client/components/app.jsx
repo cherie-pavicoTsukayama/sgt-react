@@ -12,6 +12,7 @@ class App extends React.Component {
     };
     this.getAverageGrade = this.getAverageGrade.bind(this);
     this.addGrade = this.addGrade.bind(this);
+    this.deleteGrade = this.deleteGrade.bind(this);
   }
 
   getAverageGrade() {
@@ -22,7 +23,12 @@ class App extends React.Component {
       gradeTotal += students[i].grade;
     }
     const gradeAverage = Math.round(gradeTotal / numOfStudents);
-    return gradeAverage;
+    if (this.state.grades.length === 0) {
+      return 0;
+    } else {
+      return gradeAverage;
+
+    }
   }
 
   getAllGrades() {
@@ -58,6 +64,31 @@ class App extends React.Component {
 
   }
 
+  deleteGrade(gradeId) {
+    const deleteGrade = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    fetch(`/api/grades/${gradeId}`, deleteGrade)
+      .then(() => {
+        this.setState(state => {
+          const newGrades = state.grades.filter(grade => (grade.id !== gradeId));
+          return { grades: newGrades };
+        });
+      })
+      .then(() => {
+        if (this.state.grades.length === 0) {
+          this.setState({ noGrades: null });
+        } else {
+          this.setState({ noGrades: 'd-none' });
+        }
+      })
+      .catch(err => console.error(err));
+  }
+
   componentDidMount() {
     this.getAllGrades();
   }
@@ -68,8 +99,10 @@ class App extends React.Component {
         <Header average={ this.getAverageGrade() } />
         <main>
           <div className='d-flex'>
-            <GradeTable grades={this.state.grades} />
-            <GradeForm onSubmit={this.addGrade}/>
+            <GradeTable grades={ this.state.grades } deleteGrade={this.deleteGrade} noGrades={this.state.noGrades} />
+
+            <GradeForm onSubmit={ this.addGrade } />
+
           </div>
           <div>
             <p className={ this.state.noGrades }>No grades recorded</p>
